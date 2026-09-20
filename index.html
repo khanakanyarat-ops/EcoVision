@@ -13,15 +13,15 @@
           content="width=device-width, initial-scale=1.0">
 
     <meta name="description"
-          content="AgriVision เว็บไซต์เพื่อการเรียนรู้ด้านการเกษตรและปศุสัตว์">
+          content="EcoVision เว็บไซต์เพื่อการเรียนรู้ด้านสิ่งแวดล้อม">
 
     <meta name="keywords"
-          content="Agriculture, Livestock, Chicken, Cow, Duck, Fish, Crops, Farming">
+          content="Environment, Carbon, PM2.5, Water Quality, Recycling">
 
     <meta name="author"
-          content="AgriVision Project">
+          content="EcoVision Project">
 
-    <title>AgriVision | Smart Farming Learning Platform</title>
+    <title>EcoVision | Environmental Learning Platform (Single File)</title>
 
     <!-- ==========================================
                     GOOGLE FONT
@@ -51,8 +51,40 @@
     <link rel="stylesheet"
           href="css/style.css">
 
-</head>
+    <!-- ==========================================
+                    PRELOAD ภาพพื้นหลัง HERO
+         โหลดรูปพื้นหลังล่วงหน้าด้วย priority สูง เพื่อให้ขึ้นเร็วและลื่นไหลขึ้น
+    =========================================== -->
+    <link rel="preload" as="image" href="images/hero-bg-mobile.jpg"
+          media="(max-width: 768px)" fetchpriority="high">
+    <link rel="preload" as="image" href="images/hero-bg.jpg"
+          media="(min-width: 769px)" fetchpriority="high">
 
+   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+    <!-- Firebase SDK (แบบ compat ใช้กับ <script> tag ธรรมดา ไม่ต้องใช้ npm) -->
+    <script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-firestore-compat.js"></script>
+
+        <!-- EmailJS SDK -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script>
+    (function () {
+        emailjs.init({ publicKey: "uPjlfxt4VW7GKs60u" });
+    })();
+    </script>
+    <script>
+    const firebaseConfig = {
+        apiKey: "AIzaSyARl5eYdgfjpy40WGh5yftHt-WyYVRQLi4",
+        authDomain: "ecovision-contact.firebaseapp.com",
+        projectId: "ecovision-contact",
+        storageBucket: "ecovision-contact.firebasestorage.app",
+        messagingSenderId: "728842406691",
+        appId: "1:728842406691:web:9e8278c166225a2595da96"
+    };
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.firestore();
+    </script>
+</head>
 <body>
 
 <!-- ==========================================
@@ -63,11 +95,11 @@
 
     <div class="loading-box">
 
-        <i class="fa-solid fa-tractor"></i>
+        <i class="fa-solid fa-seedling"></i>
 
-        <h1>AgriVision</h1>
+        <h1>EcoVision</h1>
 
-        <p>Smart Farming Learning Platform</p>
+        <p>Environmental Learning Platform</p>
 
     </div>
 
@@ -88,9 +120,9 @@
             <a href="#home"
                class="logo">
 
-                <i class="fa-solid fa-tractor"></i>
+                <i class="fa-solid fa-leaf"></i>
 
-                AgriVision
+                EcoVision
 
             </a>
 
@@ -107,7 +139,16 @@
                     </a>
 
                 </li>
-                
+                <li>
+
+                    <a href="#simulator">
+
+                        ระบบจำลอง
+
+                    </a>
+
+                </li>
+
                 <li>
 
                     <a href="#about">
@@ -122,7 +163,7 @@
 
                     <a href="#features">
 
-                        ปศุสัตว์ &amp; พืชผล
+                        ฟีเจอร์
 
                     </a>
 
@@ -168,7 +209,11 @@
                     MAIN
 ========================================== -->
 
+
 <main>
+
+<div class="page-view" id="view-home">
+
     <!-- ==========================================
                     HERO
     =========================================== -->
@@ -183,26 +228,26 @@
 
                 <span class="hero-tag">
 
-                    🌾 Smart Farming Learning Platform
+                    🌿 Environmental Learning Platform
 
                 </span>
 
                 <!-- เติม style="display: inline-block;" เข้าไปใน span เพื่อล็อกคำไม่ให้แยกบรรทัด -->
-                <h1 class="hero-title">ร่วมกันสร้าง <span class="text-green" style="display: inline-block;">ฟาร์มที่ยั่งยืน</span></h1>
+                <h1 class="hero-title">ร่วมกันสร้าง <span class="text-green" style="display: inline-block;">โลกที่ยั่งยืน</span></h1>
 
                 <p class="hero-description">
 
-                    AgriVision เป็นเว็บไซต์ที่รวบรวมองค์ความรู้
+                    EcoVision เป็นเว็บไซต์ที่รวบรวมองค์ความรู้
 
-                    และเครื่องมือด้านการเกษตร
+                    และเครื่องมือด้านสิ่งแวดล้อม
 
-                    เพื่อช่วยเกษตรกรและผู้สนใจเรียนรู้
+                    เพื่อช่วยให้ทุกคนสามารถเรียนรู้
 
-                    การเลี้ยงสัตว์และปลูกพืชผลอย่างมีประสิทธิภาพ
+                    และมีส่วนร่วมในการลดผลกระทบต่อโลก
 
-                    ผ่านระบบคำนวณต้นทุน-ผลผลิต
+                    ผ่านระบบ Carbon Footprint
 
-                    ปศุสัตว์ (ไก่ วัว เป็ด) การเลี้ยงปลา และการเพาะปลูก
+                    การแยกขยะ คุณภาพน้ำ และ PM2.5
 
                 </p>
 
@@ -212,7 +257,7 @@
 
                         class="btn btn-primary">
 
-                        <i class="fa-solid fa-wheat-awn"></i>
+                        <i class="fa-solid fa-earth-asia"></i>
 
                         เริ่มใช้งาน
 
@@ -249,6 +294,114 @@
 
     </section>
 
+<!-- ==========================================
+     ENVIRONMENTAL SIMULATOR SECTION 
+     ========================================== -->
+    <section id="simulator" class="simulator-section" style="padding: 80px 0; background: #fafafa;">
+        <div class="container">
+            <div style="text-align: center; margin-bottom: 50px;">
+                <span style="background: #dcfce7; color: #15803d; padding: 6px 16px; border-radius: 99px; font-size: 0.85rem; font-weight: 600; text-transform: uppercase;">Interactive Simulator</span>
+                <h2 style="font-size: 2.2rem; color: #0f172a; margin-top: 15px; font-weight: 700;">ระบบจำลองและคำนวณผลกระทบสิ่งแวดล้อม</h2>
+                <p style="color: #64748b; max-width: 600px; margin: 10px auto 0 auto;">ทดลองปรับค่าพารามิเตอร์ด้านล่าง เพื่อจำลองการคำนวณทางวิศวกรรมสิ่งแวดล้อมและดูการเปลี่ยนแปลงของดัชนีชี้วัดแบบ Real-time</p>
+            </div>
+
+            <!-- หน้าตา Layout แบ่งซ้าย-ขวาตามที่คุณต้องการ -->
+            <div class="simulator-layout-grid">
+                
+                <!-- ฝั่งซ้าย: ตัวควบคุมสไลเดอร์ -->
+                <div class="sim-control-panel reveal">
+                    <h3 style="font-size: 1.25rem; color: #1e293b; margin-bottom: 25px; display: flex; align-items: center; gap: 10px;">
+                        <i class="fas fa-sliders-h" style="color: #10b981;"></i> ปรับค่าตัวแปรจำลอง
+                    </h3>
+                    
+                    <!-- ตัวแปรที่ 1: การใช้ไฟฟ้า -->
+                    <div class="control-group" style="margin-bottom: 25px;">
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                            <span style="color: #475569; font-weight: 500;">การใช้ไฟฟ้าในครัวเรือน (หน่วย/เดือน)</span>
+                            <strong id="elec-val" style="color: #10b981; font-size: 1.1rem;">300</strong>
+                        </div>
+                        <input type="range" id="input-electricity" min="0" max="1000" value="300" class="sim-slider">
+                        <p style="font-size: 0.8rem; color: #94a3b8; margin-top: 4px;">*คำนวณการปล่อยคาร์บอนทางอ้อม (Scope 2)</p>
+                    </div>
+
+                    <!-- ตัวแปรที่ 2: ปริมาณขยะทั่วไป -->
+                    <div class="control-group" style="margin-bottom: 25px;">
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                            <span style="color: #475569; font-weight: 500;">ปริมาณขยะที่สร้างต่อวัน (กิโลกรัม)</span>
+                            <strong id="waste-val" style="color: #10b981; font-size: 1.1rem;">1.2</strong>
+                        </div>
+                        <input type="range" id="input-waste" min="0" max="10" step="0.1" value="1.2" class="sim-slider">
+                        <p style="font-size: 0.8rem; color: #94a3b8; margin-top: 4px;">*คำนวณอัตราการเกิดขยะและการรีไซเคิล</p>
+                    </div>
+
+                    <!-- ตัวแปรที่ 3: ระดับฝุ่นควันภายนอก -->
+                    <div class="control-group" style="margin-bottom: 25px;">
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                            <span style="color: #475569; font-weight: 500;">ความเข้มข้นของฝุ่น PM2.5 (µg/m³)</span>
+                            <strong id="pm-val" style="color: #10b981; font-size: 1.1rem;">35</strong>
+                        </div>
+                        <input type="range" id="input-pm" min="0" max="250" value="35" class="sim-slider">
+                        <p style="font-size: 0.8rem; color: #94a3b8; margin-top: 4px;">*อ้างอิงเกณฑ์มาตรฐานคุณภาพอากาศใหม่</p>
+                    </div>
+                </div>
+
+                <!-- ฝั่งขวา: ย้ายการ์ดสรุปผล (Dashboard) จากด้านบนลงมาที่นี่ และออกแบบให้สวยหรู -->
+                <div class="sim-dashboard-panel">
+                    
+                    <!-- การ์ดกระจกใบใหญ่ครอบคลุม 4 ดัชนีหลัก -->
+                    <div class="glass-dashboard-card reveal">
+                        
+                        <!-- แถวบน -->
+                        <div class="glass-stat-item">
+                            <div class="stat-icon-wrapper" style="background: #f0fdf4;"><i class="fa-solid fa-cloud" style="color: #10b981;"></i></div>
+                            <div class="stat-info">
+                                <span class="stat-label">Carbon Footprint</span>
+                                <strong id="carbon-card-val" class="stat-number">0.15 ตัน</strong>
+                            </div>
+                        </div>
+                        
+                        <div class="glass-stat-item">
+                            <div class="stat-icon-wrapper" style="background: #fef3c7;"><i class="fa-solid fa-smog" style="color: #f59e0b;"></i></div>
+                            <div class="stat-info">
+                                <span class="stat-label">PM2.5 Index</span>
+                                <strong id="pm-card-val" class="stat-number">35 µg/m³</strong>
+                            </div>
+                        </div>
+                        
+                        <!-- แถวล่าง -->
+                        <div class="glass-stat-item">
+                            <div class="stat-icon-wrapper" style="background: #eff6ff;"><i class="fa-solid fa-droplet" style="color: #3b82f6;"></i></div>
+                            <div class="stat-info">
+                                <span class="stat-label">Water Quality</span>
+                                <strong id="water-card-val" class="stat-number">Excellent</strong>
+                            </div>
+                        </div>
+                        
+                        <div class="glass-stat-item">
+                            <div class="stat-icon-wrapper" style="background: #faf5ff;"><i class="fa-solid fa-recycle" style="color: #a855f7;"></i></div>
+                            <div class="stat-info">
+                                <span class="stat-label">Recycling Target</span>
+                                <strong id="recycle-card-val" class="stat-number">10.8 กก.</strong>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- รายงานวิเคราะห์เพิ่มเติมด้านล่างกล่องการ์ด -->
+                    <div style="margin-top: 20px; background: #ffffff; padding: 20px; border-radius: 16px; border: 1px solid #e2e8f0; box-shadow: 0 4px 12px rgba(0,0,0,0.02);">
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 8px; font-size: 0.95rem;">
+                            <span style="color: #64748b;">เป้าหมายต้นไม้ที่ต้องปลูกชดเชย:</span>
+                            <strong id="trees-result" style="color: #1e293b;">150 ต้น</strong>
+                        </div>
+                        <div id="status-box" style="margin-top: 12px; padding: 10px; border-radius: 8px; text-align: center; background: #fef3c7; color: #b45309; font-weight: 600; font-size: 0.9rem;">
+                            สถานะสิ่งแวดล้อม: <span id="env-status">ปานกลาง (Moderate)</span>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </section>
         <!-- ==========================================
                     ABOUT
     =========================================== -->
@@ -269,15 +422,15 @@
 
                 <h2 class="section-title">
 
-                    AgriVision คืออะไร ?
+                    EcoVision คืออะไร ?
 
                 </h2>
 
                 <p class="section-description">
 
-                    AgriVision เป็นแพลตฟอร์มการเรียนรู้ด้านการเกษตร
-                    ที่พัฒนาขึ้นเพื่อส่งเสริมให้เกษตรกรและผู้สนใจ
-                    เข้าใจการเลี้ยงสัตว์และการเพาะปลูก
+                    EcoVision เป็นแพลตฟอร์มการเรียนรู้ด้านสิ่งแวดล้อม
+                    ที่พัฒนาขึ้นเพื่อส่งเสริมให้ทุกคนเข้าใจปัญหาสิ่งแวดล้อม
+                    และสามารถนำความรู้ไปประยุกต์ใช้ในชีวิตประจำวัน
                     ผ่านเครื่องมือและระบบต่าง ๆ ภายในเว็บไซต์
 
                 </p>
@@ -304,7 +457,7 @@
 
                         <p>
 
-                            ส่งเสริมการเรียนรู้ด้านการเกษตร
+                            ส่งเสริมการเรียนรู้ด้านสิ่งแวดล้อม
                             ผ่านเว็บไซต์ที่ใช้งานง่าย
                             พร้อมเครื่องมือที่สามารถนำไปใช้ได้จริง
 
@@ -324,9 +477,9 @@
 
                         <p>
 
-                            สร้างสังคมเกษตรกรที่เข้มแข็ง
-                            และพึ่งพาตนเองได้
-                            ด้วยเทคโนโลยีและองค์ความรู้สมัยใหม่
+                            สร้างสังคมที่ตระหนักถึงปัญหาสิ่งแวดล้อม
+                            และร่วมกันลดผลกระทบต่อโลก
+                            ด้วยเทคโนโลยีและนวัตกรรม
 
                         </p>
 
@@ -334,7 +487,7 @@
 
                     <article class="about-card reveal">
 
-                        <i class="fa-solid fa-tractor"></i>
+                        <i class="fa-solid fa-earth-asia"></i>
 
                         <h3>
 
@@ -344,8 +497,8 @@
 
                         <p>
 
-                            พัฒนาเครื่องมือด้านการเกษตร
-                            ที่ช่วยให้เกษตรกรเข้าถึงข้อมูล
+                            พัฒนาเครื่องมือด้านสิ่งแวดล้อม
+                            ที่ช่วยให้ทุกคนเข้าถึงข้อมูล
                             ได้อย่างถูกต้อง เข้าใจง่าย
                             และใช้งานได้ฟรี
 
@@ -361,17 +514,17 @@
 
                     <div class="image-box">
 
-                        <i class="fa-solid fa-wheat-awn"></i>
+                        <i class="fa-solid fa-leaf"></i>
 
                         <h3>
 
-                            Smart Farming
+                            Green Technology
 
                         </h3>
 
                         <p>
 
-                            Livestock &amp; Crop Technology
+                            Environmental Engineering
 
                         </p>
 
@@ -404,14 +557,14 @@
 
                 <h2 class="section-title">
 
-                    ปศุสัตว์และการเพาะปลูก
+                    ระบบภายในเว็บไซต์
 
                 </h2>
 
                 <p class="section-description">
 
-                    AgriVision ได้รวบรวมเครื่องมือและองค์ความรู้ด้านการเกษตร
-                    เพื่อให้เกษตรกรสามารถเรียนรู้ วางแผน และประเมินผล
+                    EcoVision ได้รวบรวมเครื่องมือและองค์ความรู้ด้านสิ่งแวดล้อม
+                    เพื่อให้ผู้ใช้งานสามารถเรียนรู้ วิเคราะห์ และประเมินผล
                     ได้อย่างสะดวกในเว็บไซต์เดียว
 
                 </p>
@@ -428,25 +581,25 @@
 
                     <div class="feature-icon">
 
-                        <i class="fa-solid fa-egg"></i>
+                        <i class="fa-solid fa-earth-asia"></i>
 
                     </div>
 
                     <h3>
 
-                        การเลี้ยงไก่
+                        Carbon Calculator
 
                     </h3>
 
                     <p>
 
-                        องค์ความรู้เรื่องการเลี้ยงไก่ไข่และไก่เนื้อ
-                        การจัดการโรงเรือน อาหาร และวัคซีน
-                        พร้อมแนวทางเพิ่มผลผลิตไข่
+                        คำนวณปริมาณการปล่อยก๊าซเรือนกระจก
+                        จากกิจกรรมในชีวิตประจำวัน
+                        พร้อมคำแนะนำในการลด Carbon Footprint
 
                     </p>
 
-                    <a href="pages/chicken.html">
+                    <a href="#carbon-calculator">
 
                         เรียนรู้เพิ่มเติม
 
@@ -460,25 +613,25 @@
 
                     <div class="feature-icon">
 
-                        <i class="fa-solid fa-cow"></i>
+                        <i class="fa-solid fa-recycle"></i>
 
                     </div>
 
                     <h3>
 
-                        การเลี้ยงวัว
+                        Smart Waste
 
                     </h3>
 
                     <p>
 
-                        ข้อมูลการเลี้ยงวัวนมและวัวเนื้อ
-                        การจัดการแปลงหญ้าและอาหารสัตว์
-                        เพื่อสุขภาพและผลผลิตที่ดี
+                        ระบบแนะนำการแยกขยะ
+                        พร้อมข้อมูลประเภทของขยะ
+                        และแนวทางการรีไซเคิลอย่างถูกต้อง
 
                     </p>
 
-                    <a href="pages/cow.html">
+                    <a href="#smart-waste">
 
                         เรียนรู้เพิ่มเติม
 
@@ -492,25 +645,25 @@
 
                     <div class="feature-icon">
 
-                        <i class="fa-solid fa-kiwi-bird"></i>
+                        <i class="fa-solid fa-smog"></i>
 
                     </div>
 
                     <h3>
 
-                        การเลี้ยงเป็ด
+                        PM2.5 Dashboard
 
                     </h3>
 
                     <p>
 
-                        แนวทางการเลี้ยงเป็ดไข่และเป็ดเนื้อ
-                        การจัดการบ่อน้ำและโรงเรือน
-                        และการป้องกันโรคระบาด
+                        แสดงข้อมูลเกี่ยวกับฝุ่น PM2.5
+                        ผลกระทบต่อสุขภาพ
+                        และแนวทางการป้องกันตนเอง
 
                     </p>
 
-                    <a href="pages/duck.html">
+                    <a href="#pm25-checker">
 
                         เรียนรู้เพิ่มเติม
 
@@ -524,25 +677,25 @@
 
                     <div class="feature-icon">
 
-                        <i class="fa-solid fa-fish"></i>
+                        <i class="fa-solid fa-droplet"></i>
 
                     </div>
 
                     <h3>
 
-                        การเลี้ยงปลา
+                        Water Quality
 
                     </h3>
 
                     <p>
 
-                        ระบบให้ความรู้เกี่ยวกับการเลี้ยงปลาในบ่อ
-                        คุณภาพน้ำ อาหารปลา
-                        และการจัดการฟาร์มปลาอย่างยั่งยืน
+                        ระบบให้ความรู้เกี่ยวกับคุณภาพน้ำ
+                        ค่ามาตรฐานน้ำ
+                        และการอนุรักษ์ทรัพยากรน้ำ
 
                     </p>
 
-                    <a href="pages/fish.html">
+                    <a href="#water-quality">
 
                         เรียนรู้เพิ่มเติม
 
@@ -556,25 +709,25 @@
 
                     <div class="feature-icon">
 
-                        <i class="fa-solid fa-wheat-awn"></i>
+                        <i class="fa-solid fa-book-open"></i>
 
                     </div>
 
                     <h3>
 
-                        การปลูกพืชผล
+                        Environmental Articles
 
                     </h3>
 
                     <p>
 
-                        รวมบทความด้านการเพาะปลูก
-                        การเตรียมดิน การให้น้ำ และปุ๋ย
-                        สำหรับพืชไร่และพืชสวนหลากหลายชนิด
+                        รวมบทความด้านสิ่งแวดล้อม
+                        งานวิจัย ข่าวสาร
+                        และองค์ความรู้ที่น่าสนใจ
 
                     </p>
 
-                    <a href="pages/crops.html">
+                    <a href="#articles">
 
                         อ่านบทความ
 
@@ -594,19 +747,19 @@
 
                     <h3>
 
-                        Farm Dashboard
+                        Environmental Dashboard
 
                     </h3>
 
                     <p>
 
-                        แสดงข้อมูลสรุปเกี่ยวกับผลผลิตฟาร์ม
+                        แสดงข้อมูลสรุปเกี่ยวกับสิ่งแวดล้อม
                         ผ่านกราฟและสถิติ
-                        เพื่อช่วยวางแผนการผลิตได้ง่ายขึ้น
+                        เพื่อช่วยให้เข้าใจข้อมูลได้ง่าย
 
                     </p>
 
-                    <a href="pages/dashboard.html">
+                    <a href="#dashboard">
 
                         ดูข้อมูล
 
@@ -645,9 +798,9 @@
 
                 <p class="section-description">
 
-                    AgriVision มุ่งหวังให้เกษตรกรเข้าถึงองค์ความรู้ด้านการเกษตร
-                    และนำไปประยุกต์ใช้ในการทำฟาร์มจริง
-                    เพื่อร่วมกันสร้างภาคเกษตรที่ยั่งยืน
+                    EcoVision มุ่งหวังให้ทุกคนเข้าถึงองค์ความรู้ด้านสิ่งแวดล้อม
+                    และนำไปประยุกต์ใช้ในชีวิตประจำวัน
+                    เพื่อร่วมกันสร้างสังคมที่ยั่งยืน
 
                 </p>
 
@@ -659,19 +812,19 @@
 
                 <article class="stat-card reveal">
 
-                    <i class="fa-solid fa-tractor stat-icon"></i>
+                    <i class="fa-solid fa-tree stat-icon"></i>
 
                     <h3 class="counter"
                         data-target="2500">
 
-                        0
+                        
 
                     </h3>
 
                     <p>
 
-                        ฟาร์มที่ลงทะเบียนใช้งาน
-                        (ตัวอย่าง)
+                        ต้นไม้ที่เทียบเท่า
+                        
 
                     </p>
 
@@ -679,19 +832,20 @@
 
                 <article class="stat-card reveal">
 
-                    <i class="fa-solid fa-wheat-awn stat-icon"></i>
+                    <i class="fa-solid fa-earth-asia stat-icon"></i>
 
                     <h3 class="counter"
                         data-target="180">
 
-                        0
+                        
 
                     </h3>
 
                     <p>
 
-                        ไร่ที่ได้รับการวางแผนเพาะปลูก
-                        (ตัวอย่าง)
+                        กิโลกรัม CO₂
+                        ที่สามารถลดได้
+                        
 
                     </p>
 
@@ -704,14 +858,14 @@
                     <h3 class="counter"
                         data-target="1000">
 
-                        0
+                        
 
                     </h3>
 
                     <p>
 
-                        เกษตรกรที่ใช้งานเว็บไซต์
-                        (ตัวอย่าง)
+                        ผู้ใช้งานเว็บไซต์
+                        
 
                     </p>
 
@@ -724,14 +878,14 @@
                     <h3 class="counter"
                         data-target="120">
 
-                        0
+                        
 
                     </h3>
 
                     <p>
 
-                        บทความด้านการเกษตร
-                        (ตัวอย่าง)
+                        บทความด้านสิ่งแวดล้อม
+                        
 
                     </p>
 
@@ -774,7 +928,6 @@
 
                 </p>
 
-
             </div>
 
             <div class="contact-container">
@@ -795,7 +948,7 @@
 
                         <p>
 
-                            Agrivision@email.com
+                            khanakanyarat@email.com
 
                         </p>
 
@@ -831,7 +984,8 @@
 
                         <p>
 
-                            23 หมู่ 6 ตำบลจังหาร อำเภอจังหาร จังหวัดร้อยเอ็ด 45000 ประเทศไทย
+                            23 หมู่ 6 ตำบลจังหาร อำเภอจังหาร
+                            จังหวัดร้อยเอ็ด 45000 ประเทศไทย
 
                         </p>
 
@@ -856,7 +1010,7 @@
                             <input
                                 type="text"
                                 id="fullname"
-                                name="from_name"
+                                name="name"
                                 placeholder="กรอกชื่อของคุณ"
                                 required>
 
@@ -873,7 +1027,7 @@
                             <input
                                 type="email"
                                 id="email"
-                                name="reply_to"
+                                name="email"
                                 placeholder="example@email.com"
                                 required>
 
@@ -890,7 +1044,7 @@
                             <input
                                 type="text"
                                 id="subject"
-                                name="title"
+                                name="subject"
                                 placeholder="หัวข้อที่ต้องการติดต่อ"
                                 required>
 
@@ -915,16 +1069,16 @@
 
                         <button
                             type="submit"
-                            id="contact-submit-btn"
-                            class="btn btn-primary">
+                            class="btn btn-primary"
+                            id="contact-submit-btn">
 
                             <i class="fa-solid fa-paper-plane"></i>
 
-                            <span id="contact-submit-text">ส่งข้อความ</span>
+                            ส่งข้อความ
 
                         </button>
 
-                        <p id="contact-form-status" style="margin-top: 12px; font-size: 0.95em;"></p>
+                        <p id="contact-status-msg" style="margin-top:15px; text-align:center; font-weight:600;"></p>
 
                     </form>
 
@@ -939,7 +1093,615 @@
                     FOOTER
     =========================================== -->
 
-    <footer class="footer">
+    
+</div>
+
+<div class="page-view" id="view-carbon-calculator" style="display:none;">
+
+
+    <section class="tool-hero">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="#features"><i class="fa-solid fa-arrow-left"></i> กลับหน้าแรก</a>
+                <span>/</span>
+                <span>Carbon Calculator</span>
+            </div>
+            <h1>Carbon Calculator</h1>
+            <p>คำนวณคาร์บอนฟุตพริ้นท์จากไฟฟ้า การเดินทาง และอาหารในชีวิตประจำวันของคุณ</p>
+        </div>
+    </section>
+
+<section class="tool-section">
+    <div class="container">
+        <div class="tool-grid">
+            <div class="tool-panel">
+                <h3><i class="fas fa-sliders-h"></i> กรอกข้อมูลการใช้ชีวิตของคุณ</h3>
+
+                <div class="tool-field">
+                    <label>ไฟฟ้าที่ใช้ต่อเดือน (หน่วย/kWh) <strong id="cc-elec-val">300</strong></label>
+                    <input type="range" id="cc-elec" min="0" max="1000" value="300" class="sim-slider">
+                    <small>คำนวณจากบิลค่าไฟเฉลี่ยต่อเดือน</small>
+                </div>
+
+                <div class="tool-field">
+                    <label>แก๊สหุงต้ม (LPG) ต่อเดือน (กก.) <strong id="cc-gas-val">15</strong></label>
+                    <input type="range" id="cc-gas" min="0" max="50" value="15" class="sim-slider">
+                    <small>ถังแก๊ส 15 กก. ใช้ได้ประมาณ 1 เดือนสำหรับครัวเรือนทั่วไป</small>
+                </div>
+
+                <div class="tool-field">
+                    <label>ระยะทางขับรถยนต์ส่วนตัวต่อเดือน (กม.) <strong id="cc-car-val">400</strong></label>
+                    <input type="range" id="cc-car" min="0" max="3000" step="50" value="400" class="sim-slider">
+                </div>
+
+                <div class="tool-field">
+                    <label>ระยะทางขี่มอเตอร์ไซค์ต่อเดือน (กม.) <strong id="cc-moto-val">100</strong></label>
+                    <input type="range" id="cc-moto" min="0" max="1500" step="50" value="100" class="sim-slider">
+                </div>
+
+                <div class="tool-field">
+                    <label>ระยะทางขนส่งสาธารณะต่อเดือน (กม.) <strong id="cc-transit-val">50</strong></label>
+                    <input type="range" id="cc-transit" min="0" max="1500" step="50" value="50" class="sim-slider">
+                </div>
+
+                <div class="tool-field">
+                    <label>มื้ออาหารที่มีเนื้อสัตว์ต่อสัปดาห์ <strong id="cc-meat-val">10</strong></label>
+                    <input type="range" id="cc-meat" min="0" max="21" value="10" class="sim-slider">
+                    <small>การผลิตเนื้อสัตว์ปล่อยคาร์บอนสูงกว่าพืชผักหลายเท่า</small>
+                </div>
+            </div>
+
+            <div class="result-card">
+                <div class="result-headline" id="cc-status-box">
+                    <span class="value" id="cc-total-val">0 กก. CO2e</span>
+                    <span class="label">คาร์บอนฟุตพริ้นท์โดยประมาณต่อเดือน</span>
+                </div>
+
+                <div class="result-breakdown">
+                    <div class="result-row"><span>ไฟฟ้า</span><span id="cc-b-elec">0 กก.</span></div>
+                    <div class="result-row"><span>แก๊สหุงต้ม</span><span id="cc-b-gas">0 กก.</span></div>
+                    <div class="result-row"><span>รถยนต์ส่วนตัว</span><span id="cc-b-car">0 กก.</span></div>
+                    <div class="result-row"><span>มอเตอร์ไซค์</span><span id="cc-b-moto">0 กก.</span></div>
+                    <div class="result-row"><span>ขนส่งสาธารณะ</span><span id="cc-b-transit">0 กก.</span></div>
+                    <div class="result-row"><span>อาหาร (เนื้อสัตว์)</span><span id="cc-b-meat">0 กก.</span></div>
+                    <div class="result-row"><span>ต้นไม้ที่ต้องปลูกชดเชย/ปี</span><span id="cc-trees">0 ต้น</span></div>
+                </div>
+
+                <div class="result-advice" id="cc-advice">
+                    ปรับค่าด้านซ้ายเพื่อดูผลลัพธ์การประเมินคาร์บอนฟุตพริ้นท์ของคุณ
+                </div>
+
+                <div class="tool-actions">
+                    <button type="button" class="tool-btn-outline" id="cc-reset-btn">
+                        <i class="fa-solid fa-rotate-left"></i> รีเซ็ตข้อมูล
+                    </button>
+                    <button type="button" class="tool-btn-outline" id="cc-download-btn">
+                        <i class="fa-solid fa-download"></i> ดาวน์โหลดผล
+                    </button>
+                    <button type="button" class="tool-btn-outline" id="cc-share-btn">
+                        <i class="fa-solid fa-share-nodes"></i> แชร์ผล
+                    </button>
+                </div>
+                <p id="cc-action-msg" class="tool-action-msg"></p>
+            </div>
+        </div>
+
+        <p style="text-align:center; color:#94a3b8; font-size:0.8rem; margin-top:24px;">
+            * ค่าสัมประสิทธิ์การปล่อยคาร์บอนเป็นค่าประมาณเพื่อการศึกษา อ้างอิงค่าเฉลี่ยทั่วไปเท่านั้น ไม่ใช่ค่าที่วัดจริงในทุกกรณี
+        </p>
+    </div>
+</section>
+
+    
+</div>
+
+<div class="page-view" id="view-pm25-checker" style="display:none;">
+
+
+    <section class="tool-hero">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="#features"><i class="fa-solid fa-arrow-left"></i> กลับหน้าแรก</a>
+                <span>/</span>
+                <span>PM2.5 Dashboard</span>
+            </div>
+            <h1>PM2.5 Dashboard</h1>
+            <p>เช็คระดับฝุ่น PM2.5 พร้อมคำแนะนำการป้องกันตัวเองตามความเข้มข้นของฝุ่น</p>
+        </div>
+    </section>
+
+<section class="tool-section">
+    <div class="container">
+        <div class="tool-grid">
+            <div class="tool-panel">
+                <h3><i class="fas fa-smog"></i> กรอกค่าฝุ่น PM2.5 วันนี้</h3>
+                <div class="tool-field">
+                    <label>ความเข้มข้น PM2.5 (µg/m³) <strong id="pm25-val">35</strong></label>
+                    <input type="range" id="pm-input" min="0" max="300" value="35" class="sim-slider">
+                    <small>ดูค่าจริงได้จากแอปตรวจสภาพอากาศ เช่น
+                        <a href="https://www.air4thai.com" target="_blank" rel="noopener">Air4Thai</a> หรือ
+                        <a href="https://www.iqair.com/th" target="_blank" rel="noopener">IQAir</a> แล้วนำมากรอกที่นี่
+                    </small>
+                </div>
+
+                <button type="button" class="tool-btn" id="pm-fetch-btn">
+                    <i class="fa-solid fa-location-crosshairs"></i> ดึงค่าจริงจากตำแหน่งปัจจุบัน
+                </button>
+                <p id="pm-fetch-msg" class="tool-action-msg"></p>
+            </div>
+
+            <div class="result-card">
+                <div class="result-headline" id="pm-status-box">
+                    <span class="value" id="pm-status-text">ปานกลาง</span>
+                    <span class="label">ระดับคุณภาพอากาศ</span>
+                </div>
+                <div class="result-advice" id="pm-advice">
+                    กำลังประเมิน...
+                </div>
+            </div>
+        </div>
+
+        <div class="tool-panel" style="margin-top: 30px;">
+            <h3><i class="fas fa-mask"></i> คำแนะนำตามระดับฝุ่น</h3>
+            <div class="result-breakdown">
+                <div class="result-row"><span>0 - 15 µg/m³</span><span>ดีมาก — ใช้ชีวิตกลางแจ้งได้ตามปกติ</span></div>
+                <div class="result-row"><span>15.1 - 25 µg/m³</span><span>ดี — กลุ่มเสี่ยงควรสังเกตอาการ</span></div>
+                <div class="result-row"><span>25.1 - 37.5 µg/m³</span><span>ปานกลาง — สวมหน้ากากอนามัยเมื่ออยู่กลางแจ้งนาน</span></div>
+                <div class="result-row"><span>37.5 - 75 µg/m³</span><span>เริ่มมีผลกระทบ — สวมหน้ากาก N95 เมื่อออกนอกอาคาร</span></div>
+                <div class="result-row"><span>มากกว่า 75 µg/m³</span><span>มีผลกระทบต่อสุขภาพ — หลีกเลี่ยงกิจกรรมกลางแจ้ง</span></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+    
+</div>
+
+<div class="page-view" id="view-smart-waste" style="display:none;">
+
+
+    <section class="tool-hero">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="#features"><i class="fa-solid fa-arrow-left"></i> กลับหน้าแรก</a>
+                <span>/</span>
+                <span>Smart Waste</span>
+            </div>
+            <h1>Smart Waste</h1>
+            <p>เช็คว่าขยะแต่ละชิ้นควรทิ้งถังไหน พร้อมคำนวณเป้าหมายการรีไซเคิลของคุณ</p>
+        </div>
+    </section>
+
+<section class="tool-section">
+    <div class="container">
+        <div class="tool-grid">
+            <div class="tool-panel">
+                <h3><i class="fas fa-magnifying-glass"></i> เช็คว่าขยะชิ้นนี้ทิ้งถังไหน</h3>
+
+                <!-- ถังขยะ 4 สีตามมาตรฐาน -->
+                <div class="bin-legend" id="bin-legend">
+                    <div class="bin-legend-item" data-bin="bin-wet">
+                        <span class="bin-swatch bin-swatch-wet"><i class="fa-solid fa-trash-can"></i></span>
+                        <small>เขียว<br>ขยะเปียก</small>
+                    </div>
+                    <div class="bin-legend-item" data-bin="bin-recycle">
+                        <span class="bin-swatch bin-swatch-recycle"><i class="fa-solid fa-trash-can"></i></span>
+                        <small>เหลือง<br>รีไซเคิล</small>
+                    </div>
+                    <div class="bin-legend-item" data-bin="bin-general">
+                        <span class="bin-swatch bin-swatch-general"><i class="fa-solid fa-trash-can"></i></span>
+                        <small>น้ำเงิน<br>ทั่วไป</small>
+                    </div>
+                    <div class="bin-legend-item" data-bin="bin-hazard">
+                        <span class="bin-swatch bin-swatch-hazard"><i class="fa-solid fa-trash-can"></i></span>
+                        <small>แดง<br>อันตราย</small>
+                    </div>
+                </div>
+
+                <div class="tool-field">
+                    <label>เลือกประเภทขยะ</label>
+                    <select id="sw-item">
+                        <option value="">-- เลือกขยะ --</option>
+                        <option value="plastic_bottle">🥤 ขวดน้ำพลาสติก (PET)</option>
+                        <option value="food_waste">🍃 เศษอาหาร</option>
+                        <option value="paper">📄 กระดาษ/กล่องกระดาษ</option>
+                        <option value="battery">🔋 ถ่านไฟฉาย/แบตเตอรี่</option>
+                        <option value="plastic_bag">🛍️ ถุงพลาสติกเปื้อน</option>
+                        <option value="can">🥫 กระป๋องอลูมิเนียม</option>
+                        <option value="lightbulb">💡 หลอดไฟ/หลอดฟลูออเรสเซนต์</option>
+                        <option value="glass">🍾 ขวดแก้ว/เศษแก้ว</option>
+                        <option value="foam">📦 กล่องโฟม</option>
+                        <option value="clothes">👕 เสื้อผ้าเก่า</option>
+                        <option value="electronics">📱 ขยะอิเล็กทรอนิกส์ (สายชาร์จ/มือถือเก่า)</option>
+                    </select>
+                </div>
+                <button class="tool-btn" id="sw-check-btn">เช็คถังขยะ</button>
+
+                <div id="sw-result" style="margin-top:24px;"></div>
+            </div>
+
+            <div class="tool-panel">
+                <h3><i class="fas fa-calculator"></i> คำนวณเป้าหมายการรีไซเคิล</h3>
+
+                <div class="tool-field">
+                    <label>ปริมาณขยะที่สร้างต่อวัน (กก.) <strong id="sw-waste-val">1.2</strong></label>
+                    <input type="range" id="sw-waste" min="0" max="10" step="0.1" value="1.2" class="sim-slider">
+                </div>
+
+                <div class="tool-field">
+                    <label>สัดส่วนที่รีไซเคิลได้ (%) <strong id="sw-rate-val">30</strong></label>
+                    <input type="range" id="sw-rate" min="0" max="100" step="5" value="30" class="sim-slider">
+                </div>
+
+                <div class="result-row">
+                    <span>เป้าหมายรีไซเคิลต่อเดือน</span>
+                    <span id="sw-target">10.8 กก.</span>
+                </div>
+                <div class="result-row" style="margin-top:10px;">
+                    <span>ขยะทั่วไปที่เหลือต่อเดือน</span>
+                    <span id="sw-remaining">25.2 กก.</span>
+                </div>
+                <div class="result-advice" style="margin-top:20px;" id="sw-advice">
+                    ปรับค่าด้านบนเพื่อดูเป้าหมายการรีไซเคิลของคุณ
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+    
+</div>
+
+<div class="page-view" id="view-water-quality" style="display:none;">
+
+  <section class="tool-hero">
+    <div class="container">
+      <div class="breadcrumb">
+        <a href="#features"><i class="fa-solid fa-arrow-left"></i> กลับหน้าแรก</a>
+        <span>/</span>
+        <span>Water Quality</span>
+      </div>
+      <h1>Water Quality</h1>
+      <p>ประเมินคุณภาพน้ำจากค่า pH ออกซิเจนละลายน้ำ และความขุ่น</p>
+    </div>
+  </section>
+
+  <section class="tool-section">
+    <div class="container">
+      <div class="tool-grid">
+
+        <div class="tool-panel">
+          <h3><i class="fas fa-droplet"></i> กรอกค่าคุณภาพน้ำ</h3>
+
+          <!-- Preset -->
+          <div style="margin-bottom:1.2rem;">
+            <p style="font-size:12px;color:#94a3b8;margin-bottom:8px;">
+              เลือกประเภทแหล่งน้ำ (ใส่ค่าตัวอย่างอัตโนมัติ)
+            </p>
+            <div style="display:flex;gap:8px;flex-wrap:wrap;">
+              <button class="wq-preset-btn" onclick="wqPreset(7,7.5,5,this)">🚰 น้ำประปา</button>
+              <button class="wq-preset-btn" onclick="wqPreset(6.5,5,20,this)">🏞️ น้ำแม่น้ำ</button>
+              <button class="wq-preset-btn" onclick="wqPreset(7.2,8,2,this)">🌊 น้ำบาดาล</button>
+              <button class="wq-preset-btn" onclick="wqPreset(5.5,3,80,this)">🏭 น้ำเสีย</button>
+            </div>
+          </div>
+
+          <!-- pH -->
+          <div class="tool-field">
+            <label>
+              ค่า pH
+              <span class="wq-tooltip-wrap">
+                <span class="wq-tooltip-icon">?</span>
+                <span class="wq-tooltip-box">
+                  <strong>วิธีวัด pH</strong><br>
+                  ใช้กระดาษลิตมัส (30–100 บ.) หรือปากกาวัด pH (200–500 บ.) จุ่มลงในน้ำ 30 วินาที<br><br>
+                  <strong>ช่วยจำ:</strong> น้ำกลาง = 7, เปรี้ยว &lt; 7, ด่าง &gt; 7
+                </span>
+              </span>
+              <strong id="wq-ph-val">7.0</strong>
+            </label>
+            <div class="wq-bar-labels"><span>0 (กรด)</span><span>7 (กลาง)</span><span>14 (ด่าง)</span></div>
+            <div class="wq-color-bar wq-bar-ph"></div>
+            <input type="range" id="wq-ph" min="0" max="14" step="0.1" value="7.0"
+                   class="sim-slider" oninput="wqUpdate()">
+            <small id="wq-ph-hint" class="wq-hint-good">✓ อยู่ในเกณฑ์ดี (6.5–8.5) เหมาะสำหรับน้ำดื่ม/แหล่งน้ำธรรมชาติ</small>
+          </div>
+
+          <!-- DO -->
+          <div class="tool-field">
+            <label>
+              ออกซิเจนในน้ำ (DO) — ยิ่งสูงยิ่งดี
+              <span class="wq-tooltip-wrap">
+                <span class="wq-tooltip-icon">?</span>
+                <span class="wq-tooltip-box">
+                  <strong>DO คืออะไร?</strong><br>
+                  ปริมาณออกซิเจนที่ละลายอยู่ในน้ำ ถ้าต่ำเกินไปปลาและสัตว์น้ำจะขาดอากาศ<br><br>
+                  <strong>วิธีวัด:</strong> ใช้ DO Meter (1,500–5,000 บ.) หรือส่งแล็บวิเคราะห์
+                </span>
+              </span>
+              <strong id="wq-do-val">6.0</strong> mg/L
+            </label>
+            <div class="wq-bar-labels"><span>0</span><span>6+ ดี</span><span>14 mg/L</span></div>
+            <div class="wq-color-bar wq-bar-do"></div>
+            <input type="range" id="wq-do" min="0" max="15" step="0.1" value="6.0"
+                   class="sim-slider" oninput="wqUpdate()">
+            <small id="wq-do-hint" class="wq-hint-good">✓ ดี ค่าควรสูงกว่า 6 mg/L น้ำมีออกซิเจนเพียงพอสำหรับสิ่งมีชีวิต</small>
+          </div>
+
+          <!-- Turbidity -->
+          <div class="tool-field">
+            <label>
+              ความขุ่นของน้ำ — ยิ่งต่ำยิ่งใส
+              <span class="wq-tooltip-wrap">
+                <span class="wq-tooltip-icon">?</span>
+                <span class="wq-tooltip-box">
+                  <strong>NTU คืออะไร?</strong><br>
+                  หน่วยวัดความขุ่นของน้ำ น้ำประปาควรต่ำกว่า 5 NTU<br><br>
+                  <strong>ประเมินง่ายๆ:</strong> ถ้ามองเห็นก้นแก้ว 30 ซม. ได้ชัด ≈ &lt;5 NTU
+                </span>
+              </span>
+              <strong id="wq-turb-val">5</strong> NTU
+            </label>
+            <div class="wq-bar-labels"><span>0 (ใส)</span><span>5</span><span>100 NTU (ขุ่น)</span></div>
+            <div class="wq-color-bar wq-bar-turb"></div>
+            <input type="range" id="wq-turb" min="0" max="100" value="5"
+                   class="sim-slider" oninput="wqUpdate()">
+            <small id="wq-turb-hint" class="wq-hint-good">✓ ดีมาก ต่ำกว่า 5 NTU น้ำค่อนข้างใส เหมาะสำหรับใช้งานทั่วไป</small>
+          </div>
+        </div>
+
+        <!-- Result card (โครงสร้างเดิม) -->
+        <div class="result-card">
+          <div class="result-headline status-good" id="wq-status-box">
+            <span class="value" id="wq-status-text">ดีเยี่ยม</span>
+            <span class="label">ดัชนีคุณภาพน้ำโดยรวม</span>
+          </div>
+          <div class="result-breakdown">
+            <div class="result-row"><span>pH</span><span id="wq-b-ph">-</span></div>
+            <div class="result-row"><span>ออกซิเจนละลายน้ำ</span><span id="wq-b-do">-</span></div>
+            <div class="result-row"><span>ความขุ่น</span><span id="wq-b-turb">-</span></div>
+          </div>
+
+          <div class="wq-chart-wrap">
+            <canvas id="wq-score-chart" height="180"></canvas>
+          </div>
+
+          <div class="result-advice" id="wq-advice">ปรับค่าด้านซ้ายเพื่อประเมินคุณภาพน้ำ</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<div class="page-view" id="view-articles" style="display:none;">
+
+
+    <section class="tool-hero">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="#features"><i class="fa-solid fa-arrow-left"></i> กลับหน้าแรก</a>
+                <span>/</span>
+                <span>Environmental Articles</span>
+            </div>
+            <h1>Environmental Articles</h1>
+            <p>รวมบทความให้ความรู้ด้านสิ่งแวดล้อม ตั้งแต่ฝุ่น PM2.5 ไปจนถึงพลังงานหมุนเวียน</p>
+        </div>
+    </section>
+
+<section class="tool-section">
+    <div class="container">
+        <div class="article-grid">
+
+            <details class="article-card" open>
+                <summary>
+                    <div class="article-icon"><i class="fa-solid fa-smog"></i></div>
+                    <div>
+                        <h3>PM2.5 คืออะไร และป้องกันตัวเองอย่างไร</h3>
+                        <p>ทำความรู้จักฝุ่นละอองขนาดเล็กที่ส่งผลต่อสุขภาพ และวิธีป้องกันตัวเองในวันที่ค่าฝุ่นสูง</p>
+                    </div>
+                    <i class="fa-solid fa-chevron-down toggle-icon"></i>
+                </summary>
+                <div class="article-body">
+                    
+            <p>PM2.5 คือฝุ่นละอองขนาดเล็กที่มีเส้นผ่านศูนย์กลางไม่เกิน 2.5 ไมครอน เล็กกว่าเส้นผมมนุษย์ประมาณ 25 เท่า
+            ด้วยขนาดที่เล็กมากทำให้สามารถเล็ดลอดผ่านระบบทางเดินหายใจเข้าสู่ปอดและกระแสเลือดได้โดยตรง
+            แหล่งกำเนิดหลักของ PM2.5 ในเมืองใหญ่มักมาจากการเผาไหม้เชื้อเพลิง ไอเสียรถยนต์ การเผาในที่โล่ง
+            และกิจกรรมทางอุตสาหกรรม</p>
+            <p>ผลกระทบต่อสุขภาพมีตั้งแต่ระคายเคืองตา จมูก และลำคอ ไปจนถึงปัญหาทางเดินหายใจเรื้อรังและ
+            ความเสี่ยงต่อโรคหัวใจและหลอดเลือดในระยะยาว กลุ่มที่ต้องระวังเป็นพิเศษคือเด็กเล็ก ผู้สูงอายุ
+            หญิงตั้งครรภ์ และผู้ที่มีโรคประจำตัวเกี่ยวกับระบบทางเดินหายใจ</p>
+            <p>วิธีป้องกันตัวเองที่ทำได้ง่ายคือ ตรวจสอบค่าฝุ่นก่อนออกจากบ้านผ่านแอปพลิเคชันตรวจอากาศ
+            สวมหน้ากากที่มีมาตรฐานกรองฝุ่นละเอียด เช่น N95 เมื่อค่าฝุ่นสูง ปิดหน้าต่างและใช้เครื่องฟอกอากาศ
+            ภายในบ้านหรือที่ทำงาน และหลีกเลี่ยงการออกกำลังกายกลางแจ้งในวันที่คุณภาพอากาศแย่</p>
+        
+                </div>
+            </details>
+
+            <details class="article-card">
+                <summary>
+                    <div class="article-icon"><i class="fa-solid fa-earth-asia"></i></div>
+                    <div>
+                        <h3>คาร์บอนฟุตพริ้นท์ในชีวิตประจำวัน ลดได้อย่างไรบ้าง</h3>
+                        <p>ทุกกิจกรรมในชีวิตประจำวัน ตั้งแต่การเดินทางไปจนถึงมื้ออาหาร ล้วนสร้างคาร์บอนฟุตพริ้นท์โดยที่เราอาจไม่รู้ตัว</p>
+                    </div>
+                    <i class="fa-solid fa-chevron-down toggle-icon"></i>
+                </summary>
+                <div class="article-body">
+                    
+            <p>คาร์บอนฟุตพริ้นท์ คือปริมาณก๊าซเรือนกระจกทั้งหมดที่เกิดจากกิจกรรมของแต่ละบุคคลหรือองค์กร
+            มักวัดในหน่วยกิโลกรัมหรือตันคาร์บอนไดออกไซด์เทียบเท่า (CO2e) แหล่งปล่อยคาร์บอนหลักในชีวิตประจำวัน
+            ได้แก่ การใช้ไฟฟ้าในบ้าน การเดินทางด้วยยานพาหนะส่วนตัว และการบริโภคอาหารโดยเฉพาะเนื้อสัตว์</p>
+            <p>การลดคาร์บอนฟุตพริ้นท์ไม่จำเป็นต้องเปลี่ยนชีวิตแบบพลิกฝ่ามือ แต่สามารถเริ่มจากการปรับพฤติกรรมเล็กๆ
+            เช่น ปิดไฟและเครื่องใช้ไฟฟ้าเมื่อไม่ใช้งาน เลือกใช้ขนส่งสาธารณะหรือจักรยานแทนรถยนต์ส่วนตัวในระยะทางสั้นๆ
+            และลดการบริโภคเนื้อสัตว์ลงบางมื้อต่อสัปดาห์</p>
+            <p>อีกแนวทางหนึ่งคือการชดเชยคาร์บอนผ่านการปลูกต้นไม้ เนื่องจากต้นไม้ช่วยดูดซับคาร์บอนไดออกไซด์
+            จากอากาศได้ตามธรรมชาติ การคำนวณคาร์บอนฟุตพริ้นท์ของตัวเองเป็นประจำจะช่วยให้เห็นภาพรวมและ
+            วางแผนปรับพฤติกรรมได้ตรงจุดมากขึ้น</p>
+        
+                </div>
+            </details>
+
+            <details class="article-card">
+                <summary>
+                    <div class="article-icon"><i class="fa-solid fa-recycle"></i></div>
+                    <div>
+                        <h3>แยกขยะให้ถูกวิธี เริ่มต้นง่ายๆ ที่บ้าน</h3>
+                        <p>การแยกขยะตั้งแต่ต้นทางช่วยลดปริมาณขยะฝังกลบและเพิ่มโอกาสในการนำวัสดุกลับมาใช้ใหม่ได้มากขึ้น</p>
+                    </div>
+                    <i class="fa-solid fa-chevron-down toggle-icon"></i>
+                </summary>
+                <div class="article-body">
+                    
+            <p>ขยะในครัวเรือนโดยทั่วไปสามารถแบ่งออกเป็น 4 ประเภทหลัก ได้แก่ ขยะรีไซเคิล เช่น ขวดพลาสติก
+            กระดาษ และกระป๋องอลูมิเนียม ขยะเปียกหรือขยะอินทรีย์ เช่น เศษอาหารและเศษผัก ขยะทั่วไปที่ไม่สามารถ
+            รีไซเคิลได้ เช่น ถุงพลาสติกเปื้อนหรือกล่องโฟม และขยะอันตราย เช่น ถ่านไฟฉาย หลอดไฟ และสารเคมี</p>
+            <p>การแยกขยะตั้งแต่ต้นทางช่วยให้กระบวนการรีไซเคิลมีประสิทธิภาพมากขึ้น ลดการปนเปื้อนของวัสดุรีไซเคิล
+            และลดปริมาณขยะที่ต้องนำไปฝังกลบ ซึ่งเป็นสาเหตุหนึ่งของการปล่อยก๊าซมีเทนที่ส่งผลต่อภาวะโลกร้อน</p>
+            <p>เคล็ดลับง่ายๆ ในการเริ่มต้นคือ จัดเตรียมถังขยะแยกประเภทอย่างน้อย 2-3 ถังภายในบ้าน ล้างทำความสะอาด
+            บรรจุภัณฑ์ก่อนทิ้งลงถังรีไซเคิล และเก็บขยะอันตรายไว้ต่างหากเพื่อนำไปทิ้งยังจุดรับที่กำหนดโดยเฉพาะ
+            แทนที่จะทิ้งรวมกับขยะทั่วไป</p>
+        
+                </div>
+            </details>
+
+            <details class="article-card">
+                <summary>
+                    <div class="article-icon"><i class="fa-solid fa-droplet"></i></div>
+                    <div>
+                        <h3>คุณภาพน้ำ สำคัญต่อชีวิตเราอย่างไร</h3>
+                        <p>น้ำสะอาดเป็นทรัพยากรพื้นฐานที่จำเป็นต่อชีวิต แต่คุณภาพน้ำในหลายพื้นที่กำลังเผชิญกับความเสื่อมโทรม</p>
+                    </div>
+                    <i class="fa-solid fa-chevron-down toggle-icon"></i>
+                </summary>
+                <div class="article-body">
+                    
+            <p>คุณภาพน้ำมักถูกประเมินจากหลายปัจจัย เช่น ค่าความเป็นกรด-ด่าง (pH) ปริมาณออกซิเจนละลายน้ำ (DO)
+            และความขุ่นของน้ำ (Turbidity) ค่าเหล่านี้สะท้อนถึงความเหมาะสมของน้ำต่อการอุปโภคบริโภคและ
+            การดำรงชีวิตของสิ่งมีชีวิตในแหล่งน้ำ</p>
+            <p>มลพิษทางน้ำมักเกิดจากน้ำเสียในครัวเรือนที่ไม่ผ่านการบำบัด สารเคมีจากภาคเกษตรกรรม
+            และของเสียจากโรงงานอุตสาหกรรม เมื่อคุณภาพน้ำเสื่อมโทรมลง จะส่งผลกระทบโดยตรงต่อระบบนิเวศทางน้ำ
+            และอาจส่งผลต่อสุขภาพของผู้ที่ใช้น้ำในการอุปโภคบริโภค</p>
+            <p>การอนุรักษ์แหล่งน้ำสามารถเริ่มได้จากสิ่งใกล้ตัว เช่น การไม่ทิ้งขยะหรือน้ำมันลงในแหล่งน้ำ
+            การใช้น้ำอย่างประหยัด และการสนับสนุนการบำบัดน้ำเสียก่อนปล่อยลงสู่แหล่งน้ำธรรมชาติ
+            ซึ่งล้วนเป็นแนวทางที่ช่วยรักษาคุณภาพน้ำให้ยั่งยืนในระยะยาว</p>
+        
+                </div>
+            </details>
+
+            <details class="article-card">
+                <summary>
+                    <div class="article-icon"><i class="fa-solid fa-shirt"></i></div>
+                    <div>
+                        <h3>Fast Fashion ผลกระทบต่อสิ่งแวดล้อมที่มองไม่เห็น</h3>
+                        <p>อุตสาหกรรมแฟชั่นที่ผลิตเสื้อผ้าราคาถูกและรวดเร็ว กำลังสร้างผลกระทบต่อสิ่งแวดล้อมในหลายมิติ</p>
+                    </div>
+                    <i class="fa-solid fa-chevron-down toggle-icon"></i>
+                </summary>
+                <div class="article-body">
+                    
+            <p>Fast Fashion คือรูปแบบธุรกิจแฟชั่นที่เน้นการผลิตเสื้อผ้าจำนวนมากในราคาถูกและวางจำหน่ายอย่างรวดเร็ว
+            เพื่อตอบสนองเทรนด์ที่เปลี่ยนแปลงตลอดเวลา แม้จะตอบโจทย์ผู้บริโภคในแง่ราคาและความหลากหลาย
+            แต่กระบวนการผลิตกลับใช้ทรัพยากรน้ำจำนวนมากและปล่อยมลพิษสูง</p>
+            <p>อุตสาหกรรมสิ่งทอเป็นหนึ่งในอุตสาหกรรมที่ใช้น้ำมากที่สุดในโลก การผลิตเสื้อผ้าหนึ่งตัวอาจใช้น้ำ
+            หลายพันลิตรตั้งแต่กระบวนการปลูกฝ้ายไปจนถึงการย้อมสี นอกจากนี้เส้นใยสังเคราะห์บางชนิดยังปลดปล่อย
+            ไมโครพลาสติกลงสู่แหล่งน้ำทุกครั้งที่ซัก</p>
+            <p>แนวทางลดผลกระทบที่ผู้บริโภคทำได้คือ เลือกซื้อเสื้อผ้าที่มีคุณภาพและใช้งานได้นาน ลดการซื้อ
+            ตามกระแสที่เปลี่ยนเร็ว สนับสนุนแบรนด์ที่ผลิตอย่างรับผิดชอบต่อสิ่งแวดล้อม และนำเสื้อผ้าเก่าไปบริจาค
+            หรือแปรรูปใช้ใหม่แทนการทิ้งลงถังขยะ</p>
+        
+                </div>
+            </details>
+
+            <details class="article-card">
+                <summary>
+                    <div class="article-icon"><i class="fa-solid fa-solar-panel"></i></div>
+                    <div>
+                        <h3>พลังงานหมุนเวียน อนาคตพลังงานไทย</h3>
+                        <p>พลังงานแสงอาทิตย์ ลม และน้ำ กำลังกลายเป็นทางเลือกสำคัญในการลดการพึ่งพาเชื้อเพลิงฟอสซิล</p>
+                    </div>
+                    <i class="fa-solid fa-chevron-down toggle-icon"></i>
+                </summary>
+                <div class="article-body">
+                    
+            <p>พลังงานหมุนเวียนคือพลังงานที่ได้จากแหล่งธรรมชาติที่สามารถเกิดขึ้นทดแทนได้อย่างต่อเนื่อง เช่น
+            แสงอาทิตย์ ลม น้ำ และชีวมวล ต่างจากเชื้อเพลิงฟอสซิลที่ใช้แล้วหมดไปและปล่อยก๊าซเรือนกระจกในปริมาณสูง
+            ประเทศไทยมีศักยภาพด้านพลังงานแสงอาทิตย์ค่อนข้างสูงเนื่องจากอยู่ในเขตร้อนที่มีแดดจัดตลอดปี</p>
+            <p>การติดตั้งแผงโซลาร์เซลล์บนหลังคาบ้านเรือนและอาคารพาณิชย์เริ่มเป็นที่นิยมมากขึ้น
+            เนื่องจากช่วยลดค่าไฟฟ้าในระยะยาวและลดการปล่อยคาร์บอนจากการผลิตไฟฟ้าด้วยเชื้อเพลิงฟอสซิล
+            ขณะเดียวกันภาครัฐและเอกชนก็เริ่มลงทุนในโครงการพลังงานลมและพลังงานน้ำมากขึ้นเช่นกัน</p>
+            <p>แม้การเปลี่ยนผ่านสู่พลังงานหมุนเวียนอย่างเต็มรูปแบบจะต้องใช้เวลาและการลงทุนโครงสร้างพื้นฐาน
+            แต่ทุกก้าวเล็กๆ เช่น การเลือกใช้อุปกรณ์ประหยัดไฟ หรือการสนับสนุนนโยบายพลังงานสะอาด
+            ล้วนเป็นส่วนหนึ่งที่ช่วยผลักดันให้อนาคตพลังงานไทยยั่งยืนมากขึ้น</p>
+        
+                </div>
+            </details>
+
+        </div>
+    </div>
+</section>
+
+    
+</div>
+
+<div class="page-view" id="view-dashboard" style="display:none;">
+
+
+    <section class="tool-hero">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="#features"><i class="fa-solid fa-arrow-left"></i> กลับหน้าแรก</a>
+                <span>/</span>
+                <span>Environmental Dashboard</span>
+            </div>
+            <h1>Environmental Dashboard</h1>
+            <p>สรุปข้อมูลสิ่งแวดล้อมของคุณผ่านกราฟ โดยอ้างอิงจากค่าที่กรอกในระบบจำลองหน้าแรก</p>
+        </div>
+    </section>
+
+<section class="tool-section">
+    <div class="container">
+        <div class="dashboard-note">
+            <i class="fa-solid fa-circle-info"></i>
+            ข้อมูลด้านล่างนำมาจากค่าที่คุณกรอกล่าสุดใน
+            <a href="#simulator">ระบบจำลอง หน้าแรก</a>
+            หากยังไม่เคยปรับค่า ระบบจะแสดงค่าเริ่มต้นให้ก่อน
+        </div>
+
+        <div class="dashboard-grid">
+            <div class="chart-card">
+                <h3>สัดส่วนคาร์บอนฟุตพริ้นท์ (ไฟฟ้า vs ขยะ)</h3>
+                <canvas id="chart-carbon"></canvas>
+            </div>
+            <div class="chart-card">
+                <h3>ระดับ PM2.5 เทียบกับเกณฑ์มาตรฐาน</h3>
+                <canvas id="chart-pm"></canvas>
+            </div>
+            <div class="chart-card">
+                <h3>เป้าหมายรีไซเคิลต่อเดือน</h3>
+                <canvas id="chart-recycle"></canvas>
+            </div>
+            <div class="chart-card">
+                <h3>สรุปตัวเลขสำคัญ</h3>
+                <div class="result-breakdown">
+                    <div class="result-row"><span>การใช้ไฟฟ้า/เดือน</span><span id="db-elec">-</span></div>
+                    <div class="result-row"><span>ขยะ/วัน</span><span id="db-waste">-</span></div>
+                    <div class="result-row"><span>PM2.5</span><span id="db-pm">-</span></div>
+                    <div class="result-row"><span>คาร์บอนฟุตพริ้นท์/เดือน</span><span id="db-carbon">-</span></div>
+                </div>
+                <a href="#simulator" class="tool-btn" style="display:block; text-align:center; margin-top:20px; text-decoration:none;">
+                    ปรับค่าที่ระบบจำลอง
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+    
+</div>
+
+<footer class="footer">
 
         <div class="container">
 
@@ -951,23 +1713,23 @@
 
                     <a href="#home" class="footer-logo">
 
-                        <i class="fa-solid fa-tractor"></i>
+                        <i class="fa-solid fa-leaf"></i>
 
-                        AgriVision
+                        EcoVision
 
                     </a>
 
                     <p>
 
-                        Smart Farming Learning Platform
+                        Environmental Learning Platform
 
                     </p>
 
                     <p>
 
-                        เว็บไซต์เพื่อการเรียนรู้ด้านการเกษตร
+                        เว็บไซต์เพื่อการเรียนรู้ด้านสิ่งแวดล้อม
                         ที่รวบรวมองค์ความรู้ เครื่องมือ
-                        และนวัตกรรมด้านปศุสัตว์และการเพาะปลูก
+                        และนวัตกรรมด้านการอนุรักษ์สิ่งแวดล้อม
                         เพื่อส่งเสริมการพัฒนาอย่างยั่งยืน
 
                     </p>
@@ -988,9 +1750,11 @@
 
                         <li><a href="#home">หน้าแรก</a></li>
 
+                        <li><a href="#simulator">ระบบจำลอง</a></li>
+
                         <li><a href="#about">เกี่ยวกับ</a></li>
 
-                        <li><a href="#features">ปศุสัตว์ &amp; พืชผล</a></li>
+                        <li><a href="#features">ฟีเจอร์</a></li>
 
                         <li><a href="#statistics">สถิติ</a></li>
 
@@ -1012,57 +1776,17 @@
 
                     <ul>
 
-                        <li>การเลี้ยงไก่</li>
+                        <li>Carbon Calculator</li>
 
-                        <li>การเลี้ยงวัว</li>
+                        <li>Smart Waste</li>
 
-                        <li>การเลี้ยงเป็ด</li>
+                        <li>PM2.5 Dashboard</li>
 
-                        <li>การเลี้ยงปลา</li>
+                        <li>Water Quality</li>
 
-                        <li>การปลูกพืชผล</li>
+                        <li>Environmental Articles</li>
 
                     </ul>
-
-                </div>
-
-                <!-- Social -->
-
-                <div class="footer-column">
-
-                    <h3>
-
-                        ติดตามเรา
-
-                    </h3>
-
-                    <div class="social-links">
-
-                        <a href="#">
-
-                            <i class="fa-brands fa-facebook-f"></i>
-
-                        </a>
-
-                        <a href="#">
-
-                            <i class="fa-brands fa-github"></i>
-
-                        </a>
-
-                        <a href="#">
-
-                            <i class="fa-brands fa-linkedin-in"></i>
-
-                        </a>
-
-                        <a href="#">
-
-                            <i class="fa-brands fa-youtube"></i>
-
-                        </a>
-
-                    </div>
 
                 </div>
 
@@ -1074,7 +1798,7 @@
 
                 <p>
 
-                    © 2026 AgriVision. All Rights Reserved.
+                    © 2026 EcoVision. All Rights Reserved.
 
                 </p>
 
@@ -1103,15 +1827,734 @@
 
     </button>
 
+
 </main>
+
 
 <!-- ==========================================
                 JAVASCRIPT
 ========================================== -->
 
-<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 <script src="js/script.js"></script>
 
-</body>
 
+<script>
+
+document.addEventListener("DOMContentLoaded", function () {
+    const ids = ["elec", "gas", "car", "moto", "transit", "meat"];
+    const sliders = {};
+    const valEls = {};
+    ids.forEach(function (id) {
+        sliders[id] = document.getElementById("cc-" + id);
+        valEls[id] = document.getElementById("cc-" + id + "-val");
+    });
+
+    const totalVal = document.getElementById("cc-total-val");
+    const statusBox = document.getElementById("cc-status-box");
+    const adviceBox = document.getElementById("cc-advice");
+    const treesEl = document.getElementById("cc-trees");
+
+    const breakdownEls = {
+        elec: document.getElementById("cc-b-elec"),
+        gas: document.getElementById("cc-b-gas"),
+        car: document.getElementById("cc-b-car"),
+        moto: document.getElementById("cc-b-moto"),
+        transit: document.getElementById("cc-b-transit"),
+        meat: document.getElementById("cc-b-meat")
+    };
+
+    if (!sliders.elec) return;
+
+    const FACTORS = {
+        elec: 0.4999,
+        gas: 3.0,
+        car: 0.192,
+        moto: 0.09,
+        transit: 0.05
+    };
+    const MEAT_FACTOR = 3.3;
+
+    function calculate() {
+        const vals = {};
+        ids.forEach(function (id) {
+            vals[id] = parseFloat(sliders[id].value) || 0;
+            if (valEls[id]) valEls[id].innerText = vals[id];
+        });
+
+        const bElec = vals.elec * FACTORS.elec;
+        const bGas = vals.gas * FACTORS.gas;
+        const bCar = vals.car * FACTORS.car;
+        const bMoto = vals.moto * FACTORS.moto;
+        const bTransit = vals.transit * FACTORS.transit;
+        const bMeat = (vals.meat * 52 / 12) * MEAT_FACTOR;
+
+        const total = bElec + bGas + bCar + bMoto + bTransit + bMeat;
+
+        breakdownEls.elec.innerText = bElec.toFixed(1) + " กก.";
+        breakdownEls.gas.innerText = bGas.toFixed(1) + " กก.";
+        breakdownEls.car.innerText = bCar.toFixed(1) + " กก.";
+        breakdownEls.moto.innerText = bMoto.toFixed(1) + " กก.";
+        breakdownEls.transit.innerText = bTransit.toFixed(1) + " กก.";
+        breakdownEls.meat.innerText = bMeat.toFixed(1) + " กก.";
+
+        totalVal.innerText = total.toFixed(1) + " กก. CO2e";
+
+        const treesPerYear = Math.ceil((total * 12) / 20);
+        treesEl.innerText = treesPerYear + " ต้น";
+
+        let advice = "";
+        if (total < 150) {
+            statusBox.style.background = "#ecfdf5";
+            statusBox.querySelector(".value").style.color = "#059669";
+            advice = "คาร์บอนฟุตพริ้นท์ของคุณอยู่ในระดับต่ำ เยี่ยมมากครับ การใช้ไฟฟ้าและการเดินทางของคุณค่อนข้างเป็นมิตรกับสิ่งแวดล้อมแล้ว";
+        } else if (total < 350) {
+            statusBox.style.background = "#fffbeb";
+            statusBox.querySelector(".value").style.color = "#d97706";
+            advice = "อยู่ในระดับปานกลาง ลองลดการเดินทางด้วยรถยนต์ส่วนตัว หรือสลับไปใช้ขนส่งสาธารณะบางวัน จะช่วยลดคาร์บอนได้มาก";
+        } else {
+            statusBox.style.background = "#fef2f2";
+            statusBox.querySelector(".value").style.color = "#dc2626";
+            advice = "คาร์บอนฟุตพริ้นท์อยู่ในระดับสูง ลองพิจารณาลดการใช้ไฟฟ้าในช่วงพีค ลดมื้ออาหารเนื้อสัตว์ และเปลี่ยนมาใช้ขนส่งสาธารณะเพื่อลดผลกระทบ";
+        }
+        adviceBox.innerText = advice;
+    }
+
+    ids.forEach(function (id) {
+        if (sliders[id]) sliders[id].addEventListener("input", calculate);
+    });
+
+    calculate();
+
+    // ---------------- ปุ่ม รีเซ็ต / ดาวน์โหลด / แชร์ ----------------
+    const DEFAULTS = { elec: 300, gas: 15, car: 400, moto: 100, transit: 50, meat: 10 };
+    const resetBtn = document.getElementById("cc-reset-btn");
+    const downloadBtn = document.getElementById("cc-download-btn");
+    const shareBtn = document.getElementById("cc-share-btn");
+    const actionMsg = document.getElementById("cc-action-msg");
+
+    function showActionMsg(text, isError) {
+        if (!actionMsg) return;
+        actionMsg.innerText = text;
+        actionMsg.style.color = isError ? "#dc2626" : "#059669";
+        actionMsg.classList.add("show");
+        clearTimeout(showActionMsg._t);
+        showActionMsg._t = setTimeout(function () {
+            actionMsg.classList.remove("show");
+        }, 3000);
+    }
+
+    if (resetBtn) {
+        resetBtn.addEventListener("click", function () {
+            ids.forEach(function (id) {
+                if (sliders[id]) sliders[id].value = DEFAULTS[id];
+            });
+            calculate();
+            showActionMsg("รีเซ็ตข้อมูลเรียบร้อยแล้ว");
+        });
+    }
+
+    function buildResultText() {
+        const lines = [
+            "=== ผลการคำนวณ Carbon Footprint — EcoVision ===",
+            "",
+            "ไฟฟ้า: " + breakdownEls.elec.innerText,
+            "แก๊สหุงต้ม: " + breakdownEls.gas.innerText,
+            "รถยนต์ส่วนตัว: " + breakdownEls.car.innerText,
+            "มอเตอร์ไซค์: " + breakdownEls.moto.innerText,
+            "ขนส่งสาธารณะ: " + breakdownEls.transit.innerText,
+            "อาหาร (เนื้อสัตว์): " + breakdownEls.meat.innerText,
+            "",
+            "รวมทั้งหมด: " + totalVal.innerText,
+            "ต้นไม้ที่ต้องปลูกชดเชย/ปี: " + treesEl.innerText,
+            "",
+            adviceBox.innerText,
+            "",
+            "สร้างจาก ecovision (" + new Date().toLocaleDateString("th-TH") + ")"
+        ];
+        return lines.join("\n");
+    }
+
+    if (downloadBtn) {
+        downloadBtn.addEventListener("click", function () {
+            const blob = new Blob([buildResultText()], { type: "text/plain;charset=utf-8" });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement("a");
+            a.href = url;
+            a.download = "carbon-footprint-result.txt";
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+            showActionMsg("ดาวน์โหลดผลลัพธ์เรียบร้อยแล้ว");
+        });
+    }
+
+    if (shareBtn) {
+        shareBtn.addEventListener("click", function () {
+            const shareText = "คาร์บอนฟุตพริ้นท์ของฉันอยู่ที่ " + totalVal.innerText +
+                " ต่อเดือน ลองคำนวณของคุณได้ที่ EcoVision";
+            if (navigator.share) {
+                navigator.share({
+                    title: "ผล Carbon Footprint ของฉัน — EcoVision",
+                    text: shareText,
+                    url: window.location.href
+                }).catch(function () { /* ผู้ใช้กดยกเลิก ไม่ต้องแจ้งเตือน */ });
+            } else if (navigator.clipboard) {
+                navigator.clipboard.writeText(shareText + " " + window.location.href)
+                    .then(function () { showActionMsg("คัดลอกผลลัพธ์ไปยังคลิปบอร์ดแล้ว"); })
+                    .catch(function () { showActionMsg("ไม่สามารถคัดลอกได้ ลองอีกครั้ง", true); });
+            } else {
+                showActionMsg("เบราว์เซอร์นี้ไม่รองรับการแชร์อัตโนมัติ", true);
+            }
+        });
+    }
+});
+
+
+/* ======================================================================= */
+
+
+document.addEventListener("DOMContentLoaded", function () {
+    const slider = document.getElementById("pm-input");
+    if (!slider) return;
+
+    const valEl = document.getElementById("pm25-val");
+    const statusBox = document.getElementById("pm-status-box");
+    const statusText = document.getElementById("pm-status-text");
+    const advice = document.getElementById("pm-advice");
+
+    function update() {
+        const pm = parseFloat(slider.value) || 0;
+        valEl.innerText = pm;
+
+        let text, bg, color, tip;
+        if (pm <= 15) {
+            text = "ดีมาก"; bg = "#ecfdf5"; color = "#059669";
+            tip = "คุณภาพอากาศดีเยี่ยม สามารถทำกิจกรรมกลางแจ้งได้ตามปกติ";
+        } else if (pm <= 25) {
+            text = "ดี"; bg = "#f0fdf4"; color = "#16a34a";
+            tip = "คุณภาพอากาศอยู่ในเกณฑ์ดี กลุ่มเสี่ยง เช่น เด็กและผู้สูงอายุ ควรสังเกตอาการผิดปกติ";
+        } else if (pm <= 37.5) {
+            text = "ปานกลาง"; bg = "#fffbeb"; color = "#d97706";
+            tip = "ควรสวมหน้ากากอนามัยเมื่อต้องอยู่กลางแจ้งเป็นเวลานาน โดยเฉพาะกลุ่มเสี่ยง";
+        } else if (pm <= 75) {
+            text = "เริ่มมีผลกระทบต่อสุขภาพ"; bg = "#fff7ed"; color = "#ea580c";
+            tip = "แนะนำให้สวมหน้ากาก N95 เมื่อออกนอกอาคาร และลดกิจกรรมกลางแจ้งที่ใช้แรงมาก";
+        } else {
+            text = "มีผลกระทบต่อสุขภาพ"; bg = "#fef2f2"; color = "#dc2626";
+            tip = "ควรหลีกเลี่ยงการออกนอกอาคาร ปิดหน้าต่างและใช้เครื่องฟอกอากาศหากมี";
+        }
+
+        statusText.innerText = text;
+        statusText.style.color = color;
+        statusBox.style.background = bg;
+        advice.innerText = tip;
+    }
+
+    slider.addEventListener("input", update);
+    update();
+
+    // ---------------- ดึงค่า PM2.5 จริงจากตำแหน่งปัจจุบัน (Open-Meteo Air Quality API) ----------------
+    const fetchBtn = document.getElementById("pm-fetch-btn");
+    const fetchMsg = document.getElementById("pm-fetch-msg");
+
+    function showFetchMsg(text, isError) {
+        if (!fetchMsg) return;
+        fetchMsg.innerText = text;
+        fetchMsg.style.color = isError ? "#dc2626" : "#059669";
+        fetchMsg.classList.add("show");
+        clearTimeout(showFetchMsg._t);
+        showFetchMsg._t = setTimeout(function () { fetchMsg.classList.remove("show"); }, 4000);
+    }
+
+    if (fetchBtn) {
+        fetchBtn.addEventListener("click", function () {
+            if (!navigator.geolocation) {
+                showFetchMsg("เบราว์เซอร์นี้ไม่รองรับการระบุตำแหน่ง", true);
+                return;
+            }
+
+            fetchBtn.disabled = true;
+            const originalLabel = fetchBtn.innerHTML;
+            fetchBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> กำลังดึงตำแหน่ง...';
+
+            navigator.geolocation.getCurrentPosition(function (pos) {
+                const lat = pos.coords.latitude;
+                const lon = pos.coords.longitude;
+                fetchBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> กำลังดึงค่าฝุ่น...';
+
+                fetch("https://air-quality-api.open-meteo.com/v1/air-quality?latitude=" + lat +
+                      "&longitude=" + lon + "&current=pm2_5")
+                    .then(function (res) {
+                        if (!res.ok) throw new Error("network");
+                        return res.json();
+                    })
+                    .then(function (data) {
+                        const pmValue = data && data.current ? Math.round(data.current.pm2_5) : null;
+                        if (pmValue === null || isNaN(pmValue)) throw new Error("no-data");
+                        slider.value = Math.min(pmValue, 300);
+                        update();
+                        showFetchMsg("ดึงค่า PM2.5 จริงสำเร็จ: " + pmValue + " µg/m³ (ข้อมูลจาก Open-Meteo)");
+                    })
+                    .catch(function () {
+                        showFetchMsg("ไม่สามารถดึงข้อมูลได้ในขณะนี้ กรุณาลองใหม่ หรือกรอกค่าด้วยตนเอง", true);
+                    })
+                    .finally(function () {
+                        fetchBtn.disabled = false;
+                        fetchBtn.innerHTML = originalLabel;
+                    });
+            }, function () {
+                showFetchMsg("ไม่ได้รับอนุญาตให้เข้าถึงตำแหน่ง กรุณาอนุญาตแล้วลองใหม่", true);
+                fetchBtn.disabled = false;
+                fetchBtn.innerHTML = originalLabel;
+            });
+        });
+    }
+});
+
+
+/* ======================================================================= */
+
+
+document.addEventListener("DOMContentLoaded", function () {
+    const WASTE_INFO = {
+        plastic_bottle: { bin: "รีไซเคิล", cls: "bin-recycle", icon: "fa-recycle", tip: "ล้างทำความสะอาดและบีบขวดให้แบนก่อนทิ้ง ช่วยประหยัดพื้นที่และทำให้กระบวนการรีไซเคิลง่ายขึ้น" },
+        food_waste: { bin: "ขยะเปียก", cls: "bin-wet", icon: "fa-leaf", tip: "แยกน้ำออกก่อนทิ้ง หรือนำไปทำปุ๋ยหมักได้ ช่วยลดปริมาณขยะที่ต้องนำไปฝังกลบ" },
+        paper: { bin: "รีไซเคิล", cls: "bin-recycle", icon: "fa-recycle", tip: "พับให้เรียบร้อยและแยกเทปกาวหรือคลิปออกก่อนนำไปขายหรือรีไซเคิล" },
+        battery: { bin: "ขยะอันตราย", cls: "bin-hazard", icon: "fa-triangle-exclamation", tip: "ห้ามทิ้งรวมกับขยะทั่วไปเด็ดขาด ควรนำไปทิ้งที่จุดรับขยะอันตรายโดยเฉพาะ" },
+        plastic_bag: { bin: "ขยะทั่วไป", cls: "bin-general", icon: "fa-trash", tip: "ถุงพลาสติกที่เปื้อนอาหารมักรีไซเคิลไม่ได้ ควรลดการใช้ถุงพลาสติกแบบใช้ครั้งเดียวทิ้ง" },
+        can: { bin: "รีไซเคิล", cls: "bin-recycle", icon: "fa-recycle", tip: "อลูมิเนียมรีไซเคิลได้เกือบ 100% ล้างคราบอาหารออกก่อนทิ้งจะช่วยเพิ่มมูลค่า" },
+        lightbulb: { bin: "ขยะอันตราย", cls: "bin-hazard", icon: "fa-triangle-exclamation", tip: "หลอดไฟมีสารปรอทเจือปน ควรนำไปทิ้งที่จุดรับทิ้งหลอดไฟโดยเฉพาะ ไม่ควรทุบทิ้ง" },
+        glass: { bin: "รีไซเคิล", cls: "bin-recycle", icon: "fa-recycle", tip: "ห่อให้มิดชิดก่อนทิ้งเพื่อป้องกันการบาดจากเศษแก้วแตก" },
+        foam: { bin: "ขยะทั่วไป", cls: "bin-general", icon: "fa-trash", tip: "กล่องโฟมส่วนใหญ่รีไซเคิลไม่คุ้มค่า ควรลดการสั่งอาหารแบบใช้กล่องโฟม" },
+        clothes: { bin: "รีไซเคิล", cls: "bin-recycle", icon: "fa-shirt", tip: "เสื้อผ้าที่ยังสภาพดีสามารถบริจาคต่อได้ ส่วนที่ขาดสามารถนำไปเป็นผ้าขี้ริ้วหรือจุดรับผ้ารีไซเคิล" },
+        electronics: { bin: "ขยะอันตราย", cls: "bin-hazard", icon: "fa-triangle-exclamation", tip: "ขยะอิเล็กทรอนิกส์มีสารพิษ ควรนำไปทิ้งที่จุดรับ E-Waste โดยเฉพาะ ไม่ควรทิ้งรวมขยะทั่วไป" }
+    };
+
+    const select = document.getElementById("sw-item");
+    const btn = document.getElementById("sw-check-btn");
+    const resultBox = document.getElementById("sw-result");
+
+    const legendItems = document.querySelectorAll("#bin-legend .bin-legend-item");
+
+    if (btn) {
+        btn.addEventListener("click", function () {
+            const key = select.value;
+            legendItems.forEach(function (el) { el.classList.remove("active"); });
+
+            if (!key) {
+                resultBox.innerHTML = '<p style="color:#ef4444;">กรุณาเลือกประเภทขยะก่อนครับ</p>';
+                return;
+            }
+            const info = WASTE_INFO[key];
+            resultBox.innerHTML =
+                '<div class="waste-bin-badge ' + info.cls + '">' +
+                '<i class="fa-solid ' + info.icon + '"></i> ทิ้งถัง: ' + info.bin +
+                '</div>' +
+                '<div class="result-advice">' + info.tip + '</div>';
+
+            const activeLegend = document.querySelector('#bin-legend [data-bin="' + info.cls + '"]');
+            if (activeLegend) activeLegend.classList.add("active");
+        });
+    }
+
+    const wasteSlider = document.getElementById("sw-waste");
+    const rateSlider = document.getElementById("sw-rate");
+    const wasteVal = document.getElementById("sw-waste-val");
+    const rateVal = document.getElementById("sw-rate-val");
+    const targetEl = document.getElementById("sw-target");
+    const remainingEl = document.getElementById("sw-remaining");
+    const adviceEl = document.getElementById("sw-advice");
+
+    function calcRecycle() {
+        const waste = parseFloat(wasteSlider.value) || 0;
+        const rate = parseFloat(rateSlider.value) || 0;
+        wasteVal.innerText = waste.toFixed(1);
+        rateVal.innerText = rate;
+
+        const monthlyTotal = waste * 30;
+        const target = monthlyTotal * (rate / 100);
+        const remaining = monthlyTotal - target;
+
+        targetEl.innerText = target.toFixed(1) + " กก.";
+        remainingEl.innerText = remaining.toFixed(1) + " กก.";
+
+        if (rate >= 60) {
+            adviceEl.innerText = "ยอดเยี่ยมมากครับ อัตรารีไซเคิลของคุณอยู่ในระดับสูงมาก ช่วยลดขยะฝังกลบได้อย่างมีนัยสำคัญ";
+        } else if (rate >= 30) {
+            adviceEl.innerText = "อยู่ในระดับปานกลาง ลองแยกขยะรีไซเคิล เช่น ขวดพลาสติก กระดาษ ให้มากขึ้นอีกนิด";
+        } else {
+            adviceEl.innerText = "อัตรารีไซเคิลยังค่อนข้างต่ำ ลองเริ่มจากการแยกขยะเปียกและขยะรีไซเคิลออกจากกันก่อน จะช่วยได้มาก";
+        }
+    }
+
+    if (wasteSlider && rateSlider) {
+        wasteSlider.addEventListener("input", calcRecycle);
+        rateSlider.addEventListener("input", calcRecycle);
+        calcRecycle();
+    }
+});
+
+
+/* ======================================================================= */
+
+
+function wqPreset(ph, doVal, turb, btn) {
+    document.getElementById('wq-ph').value   = ph;
+    document.getElementById('wq-do').value   = doVal;
+    document.getElementById('wq-turb').value = turb;
+    document.querySelectorAll('.wq-preset-btn').forEach(b => b.classList.remove('active'));
+    if (btn) btn.classList.add('active');
+    wqUpdate();
+}
+
+function wqUpdate() {
+    const ph   = parseFloat(document.getElementById('wq-ph').value);
+    const doV  = parseFloat(document.getElementById('wq-do').value);
+    const turb = parseFloat(document.getElementById('wq-turb').value);
+
+    document.getElementById('wq-ph-val').textContent   = ph.toFixed(1);
+    document.getElementById('wq-do-val').textContent   = doV.toFixed(1);
+    document.getElementById('wq-turb-val').textContent = Math.round(turb);
+
+    const phHint = document.getElementById('wq-ph-hint');
+    let phScore;
+    if (ph >= 6.5 && ph <= 8.5) {
+        phScore = 100;
+        phHint.className = 'wq-hint-good';
+        phHint.textContent = '✓ อยู่ในเกณฑ์ดี (6.5–8.5) เหมาะสำหรับน้ำดื่ม/แหล่งน้ำธรรมชาติ';
+    } else if ((ph >= 6 && ph < 6.5) || (ph > 8.5 && ph <= 9)) {
+        phScore = 60;
+        phHint.className = 'wq-hint-warn';
+        phHint.textContent = '⚠ ค่อนข้างเบี่ยงเบน ควรตรวจสอบแหล่งที่มาของน้ำ';
+    } else {
+        phScore = 20;
+        phHint.className = 'wq-hint-bad';
+        phHint.textContent = '✕ อยู่นอกเกณฑ์ ค่า pH นี้อาจเป็นอันตรายต่อสิ่งมีชีวิต';
+    }
+
+    const doHint = document.getElementById('wq-do-hint');
+    let doScore;
+    if (doV >= 6) {
+        doScore = 100;
+        doHint.className = 'wq-hint-good';
+        doHint.textContent = '✓ ดี ค่าควรสูงกว่า 6 mg/L น้ำมีออกซิเจนเพียงพอสำหรับสิ่งมีชีวิต';
+    } else if (doV >= 4) {
+        doScore = 60;
+        doHint.className = 'wq-hint-warn';
+        doHint.textContent = '⚠ ต่ำกว่าเกณฑ์ สัตว์น้ำบางชนิดอาจได้รับผลกระทบ';
+    } else {
+        doScore = 10;
+        doHint.className = 'wq-hint-bad';
+        doHint.textContent = '✕ ต่ำมาก น้ำขาดออกซิเจน สัตว์น้ำไม่สามารถดำรงชีวิตได้';
+    }
+
+    const turbHint = document.getElementById('wq-turb-hint');
+    let turbScore;
+    if (turb <= 5) {
+        turbScore = 100;
+        turbHint.className = 'wq-hint-good';
+        turbHint.textContent = '✓ ดีมาก ต่ำกว่า 5 NTU น้ำค่อนข้างใส เหมาะสำหรับใช้งานทั่วไป';
+    } else if (turb <= 25) {
+        turbScore = 60;
+        turbHint.className = 'wq-hint-warn';
+        turbHint.textContent = '⚠ ขุ่นพอสมควร ควรกรองก่อนนำไปใช้งาน';
+    } else {
+        turbScore = 20;
+        turbHint.className = 'wq-hint-bad';
+        turbHint.textContent = '✕ ขุ่นมาก ไม่เหมาะสำหรับอุปโภคบริโภค ต้องผ่านการบำบัดก่อน';
+    }
+
+    document.getElementById('wq-b-ph').textContent   = phScore + '/100';
+    document.getElementById('wq-b-do').textContent   = doScore + '/100';
+    document.getElementById('wq-b-turb').textContent = turbScore + '/100';
+
+    const avg = Math.round((phScore + doScore + turbScore) / 3);
+    const statusText = document.getElementById('wq-status-text');
+    const statusBox  = document.getElementById('wq-status-box');
+    const adviceEl   = document.getElementById('wq-advice');
+
+    statusBox.classList.remove('status-good', 'status-warn', 'status-bad');
+
+    if (avg >= 80) {
+        statusBox.classList.add('status-good');
+        statusText.textContent = 'ดีเยี่ยม';
+        adviceEl.textContent = 'คุณภาพน้ำอยู่ในเกณฑ์ดีเยี่ยม เหมาะสำหรับการอุปโภคและระบบนิเวศทางน้ำ';
+        adviceEl.style.cssText = 'background:#f0fdf4;border:1px solid #bbf7d0;color:#166534;';
+    } else if (avg >= 50) {
+        statusBox.classList.add('status-warn');
+        statusText.textContent = 'พอใช้ได้';
+        adviceEl.textContent = 'คุณภาพน้ำอยู่ในระดับปานกลาง ควรปรับปรุงค่าที่ยังไม่ผ่านเกณฑ์ก่อนนำไปใช้';
+        adviceEl.style.cssText = 'background:#fffbeb;border:1px solid #fde68a;color:#92400e;';
+    } else {
+        statusBox.classList.add('status-bad');
+        statusText.textContent = 'ไม่ผ่านเกณฑ์';
+        adviceEl.textContent = 'คุณภาพน้ำน่าเป็นห่วง ไม่เหมาะสำหรับอุปโภคบริโภคโดยตรง ควรบำบัดก่อน';
+        adviceEl.style.cssText = 'background:#fef2f2;border:1px solid #fecaca;color:#991b1b;';
+    }
+
+    renderWqChart(phScore, doScore, turbScore);
+}
+
+let wqScoreChart = null;
+function renderWqChart(phScore, doScore, turbScore) {
+    const canvas = document.getElementById('wq-score-chart');
+    if (!canvas || !window.Chart) return;
+
+    const scoreColor = function (s) {
+        if (s >= 80) return '#10b981';
+        if (s >= 50) return '#f59e0b';
+        return '#ef4444';
+    };
+    const data = [phScore, doScore, turbScore];
+    const colors = data.map(scoreColor);
+
+    if (wqScoreChart) {
+        wqScoreChart.data.datasets[0].data = data;
+        wqScoreChart.data.datasets[0].backgroundColor = colors;
+        wqScoreChart.update();
+        return;
+    }
+
+    wqScoreChart = new Chart(canvas, {
+        type: 'bar',
+        data: {
+            labels: ['pH', 'ออกซิเจน (DO)', 'ความขุ่น'],
+            datasets: [{
+                label: 'คะแนน (เต็ม 100)',
+                data: data,
+                backgroundColor: colors,
+                borderRadius: 8,
+                maxBarThickness: 48
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: { legend: { display: false } },
+            scales: { y: { beginAtZero: true, max: 100 } }
+        }
+    });
+}
+
+document.addEventListener('DOMContentLoaded', wqUpdate);
+/* ======================================================================= */
+
+/* CONTACT FORM -> EmailJS */
+
+document.addEventListener("DOMContentLoaded", function () {
+    const contactForm = document.getElementById("contact-form");
+    if (!contactForm) return;
+
+    const submitBtn = document.getElementById("contact-submit-btn");
+    const statusMsg = document.getElementById("contact-status-msg");
+
+    contactForm.addEventListener("submit", function (e) {
+        e.preventDefault();
+
+        submitBtn.disabled = true;
+        statusMsg.style.color = "#64748b";
+        statusMsg.innerText = "กำลังส่งข้อความ...";
+
+        emailjs.sendForm("service_xzg8xnw", "template_nggvc1o", contactForm)
+            .then(function () {
+                statusMsg.style.color = "#059669";
+                statusMsg.innerText = "ส่งข้อความสำเร็จ! ขอบคุณที่ติดต่อเรา เราจะตอบกลับโดยเร็วที่สุด";
+                contactForm.reset();
+                submitBtn.disabled = false;
+            })
+            .catch(function (error) {
+                statusMsg.style.color = "#dc2626";
+                statusMsg.innerText = "เกิดข้อผิดพลาด กรุณาลองใหม่อีกครั้ง";
+                submitBtn.disabled = false;
+                console.error("EmailJS error:", error);
+            });
+    });
+});
+
+/* ======================================================================= */
+
+
+let dbChartCarbon = null;
+let dbChartPM = null;
+let dbChartRecycle = null;
+
+function renderEcoDashboard() {
+    const elec = parseFloat(localStorage.getItem("ecovision_elec")) || 300;
+    const waste = parseFloat(localStorage.getItem("ecovision_waste")) || 1.2;
+    const pm = parseFloat(localStorage.getItem("ecovision_pm")) || 35;
+
+    const carbonElec = elec * 0.499;
+    const carbonWaste = waste * 30 * 0.0015;
+    const totalCarbonKg = carbonElec + carbonWaste;
+    const recycleTarget = parseFloat((waste * 30 * 0.3).toFixed(1));
+    const remaining = parseFloat((waste * 30 - recycleTarget).toFixed(1));
+
+    const dbElecEl = document.getElementById("db-elec");
+    const dbWasteEl = document.getElementById("db-waste");
+    const dbPmEl = document.getElementById("db-pm");
+    const dbCarbonEl = document.getElementById("db-carbon");
+    if (!dbElecEl) return; // หน้า dashboard ยังไม่ถูกโหลดใน DOM
+
+    dbElecEl.innerText = elec + " หน่วย/เดือน";
+    dbWasteEl.innerText = waste.toFixed(1) + " กก./วัน";
+    dbPmEl.innerText = pm + " µg/m³";
+    dbCarbonEl.innerText = (totalCarbonKg / 1000).toFixed(2) + " ตัน/เดือน";
+
+    const colorGreen = "#10b981";
+    const colorAmber = "#f59e0b";
+    const colorBlue = "#3b82f6";
+    const colorPurple = "#a855f7";
+    const colorRed = "#ef4444";
+    const colorGray = "#cbd5e1";
+
+    if (!window.Chart) return;
+
+    // ลบกราฟเก่าทิ้งก่อน ป้องกันการวาดซ้อนกันทุกครั้งที่เข้าหน้านี้ใหม่
+    if (dbChartCarbon) dbChartCarbon.destroy();
+    if (dbChartPM) dbChartPM.destroy();
+    if (dbChartRecycle) dbChartRecycle.destroy();
+
+    dbChartCarbon = new Chart(document.getElementById("chart-carbon"), {
+        type: "doughnut",
+        data: {
+            labels: ["ไฟฟ้า", "ขยะ"],
+            datasets: [{
+                data: [carbonElec, carbonWaste],
+                backgroundColor: [colorGreen, colorPurple],
+                borderWidth: 0
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    position: "bottom",
+                    labels: {
+                        // แก้ label ให้แสดงเปอร์เซ็นต์ต่อท้ายชื่อ เช่น "ไฟฟ้า (99.99%)"
+                        generateLabels: function (chart) {
+                            const data = chart.data;
+                            const total = data.datasets[0].data.reduce((a, b) => a + b, 0);
+                            return data.labels.map(function (label, i) {
+                                const value = data.datasets[0].data[i];
+                                const percent = total > 0 ? ((value / total) * 100) : 0;
+                                const percentText = percent < 0.01 && percent > 0
+                                    ? "< 0.01%"
+                                    : percent.toFixed(2) + "%";
+                                return {
+                                    text: label + " (" + percentText + ")",
+                                    fillStyle: data.datasets[0].backgroundColor[i],
+                                    strokeStyle: data.datasets[0].backgroundColor[i],
+                                    index: i
+                                };
+                            });
+                        }
+                    }
+                },
+                tooltip: {
+                    callbacks: {
+                        // ตอน hover เมาส์ ให้ขึ้นค่า กก. จริง + เปอร์เซ็นต์
+                        label: function (context) {
+                            const total = context.dataset.data.reduce((a, b) => a + b, 0);
+                            const value = context.parsed;
+                            const percent = total > 0 ? ((value / total) * 100) : 0;
+                            const percentText = percent < 0.01 && percent > 0
+                                ? "< 0.01%"
+                                : percent.toFixed(2) + "%";
+                            return context.label + ": " + value.toFixed(3) + " กก. (" + percentText + ")";
+                        }
+                    }
+                }
+            }
+        }
+    });
+
+    dbChartPM = new Chart(document.getElementById("chart-pm"), {
+        type: "bar",
+        data: {
+            labels: ["ค่าของคุณ", "เกณฑ์ดี", "เกณฑ์ปานกลาง", "เริ่มมีผลกระทบ"],
+            datasets: [{
+                label: "PM2.5 (µg/m³)",
+                data: [pm, 25, 37.5, 75],
+                backgroundColor: [colorAmber, colorGreen, colorAmber, colorRed]
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: { legend: { display: false } },
+            scales: { y: { beginAtZero: true } }
+        }
+    });
+
+    dbChartRecycle = new Chart(document.getElementById("chart-recycle"), {
+        type: "bar",
+        data: {
+            labels: ["เป้าหมายรีไซเคิล", "ขยะทั่วไปที่เหลือ"],
+            datasets: [{
+                data: [recycleTarget, remaining],
+                backgroundColor: [colorBlue, colorGray]
+            }]
+        },
+        options: {
+            indexAxis: "y",
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: { legend: { display: false } },
+            scales: { x: { beginAtZero: true } }
+        }
+    });
+}
+
+/* ======================================================================= */
+
+
+// ==========================================================================
+// SPA ROUTER: สลับ "หน้า" ภายในไฟล์เดียว โดยอิงจาก URL hash
+// ==========================================================================
+(function () {
+    var ROUTES = ["home", "carbon-calculator", "pm25-checker", "smart-waste", "water-quality", "articles", "dashboard"];
+
+    function showPageFromHash() {
+    var raw = (location.hash || "").replace("#", "");
+    var pageId = "home";
+    var scrollTarget = null;
+
+    if (ROUTES.indexOf(raw) !== -1) {
+        pageId = raw;
+    } else if (raw) {
+        pageId = "home";
+        scrollTarget = raw;
+    }
+
+    document.querySelectorAll(".page-view").forEach(function (el) {
+        el.style.display = (el.id === "view-" + pageId) ? "" : "none";
+    });
+
+    // 🟢 เพิ่มส่วนนี้: พอ canvas ถูกเปิดให้เห็นแล้ว ค่อยวาดกราฟใหม่
+    if (pageId === "dashboard") {
+        setTimeout(renderEcoDashboard, 0);
+    }
+
+    if (scrollTarget) {
+        var el = document.getElementById(scrollTarget);
+        if (el) {
+            setTimeout(function () {
+                el.scrollIntoView({ behavior: "smooth" });
+            }, 50);
+        }
+    } else {
+        window.scrollTo(0, 0);
+    }
+}
+
+    window.addEventListener("hashchange", showPageFromHash);
+    window.addEventListener("DOMContentLoaded", showPageFromHash);
+})();
+
+</script>
+
+
+</body>
 </html>
